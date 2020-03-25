@@ -1,0 +1,12 @@
+*.iml
+*.ipr
+*.iws
+*.swp
+.DS_Store
+.gradle
+.idea
+build
+*/generated_src
+out
+image-downloader/var/conf/image-downloader.yml
+metadata-scraper/var/conf/metadata-scraper.yml

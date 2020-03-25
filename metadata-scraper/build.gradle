@@ -1,0 +1,17 @@
+apply plugin: 'com.palantir.sls-java-service-distribution'
+
+dependencies {
+    implementation 'com.squareup.okhttp3:okhttp'
+    implementation 'io.dropwizard:dropwizard-core'
+    implementation 'one.util:streamex'
+    implementation 'org.apache.commons:commons-csv'
+
+    annotationProcessor 'org.immutables:value'
+    compileOnly 'org.immutables:value::annotations'
+}
+
+distribution {
+    mainClass 'edu.cmu.cs.dvids.scraper.metadata.MetadataScraper'
+    args 'server', 'var/conf/metadata-scraper.yml'
+    // defaultJvmOpts '-Xdebug', '-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=0.0.0.0:5005'
+}

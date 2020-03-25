@@ -1,0 +1,8 @@
+api-key: <your_key_here>
+latest-date: 2020-03-15
+earliest-date: 2004-01-01
+output-dir: /home/ubuntu/dvids-metadata
+num-splits: 4
+server:
+  applicationConnectors: []
+  adminConnectors: []

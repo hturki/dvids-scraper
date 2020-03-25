@@ -1,0 +1,56 @@
+buildscript {
+    repositories {
+        jcenter()
+        gradlePluginPortal()
+        maven { url "http://palantir.bintray.com/releases" }
+    }
+
+    dependencies {
+        classpath 'com.palantir.baseline:gradle-baseline-java:3.8.0'
+        classpath 'com.palantir.gradle.consistentversions:gradle-consistent-versions:1.17.3'
+        classpath 'com.palantir.gradle.gitversion:gradle-git-version:0.12.2'
+        classpath 'com.palantir.sls-packaging:gradle-sls-packaging:4.7.0'
+        classpath 'gradle.plugin.org.inferred:gradle-processors:3.3.0'
+    }
+}
+
+apply plugin: 'com.palantir.baseline'
+apply plugin: 'com.palantir.consistent-versions'
+apply plugin: 'com.palantir.git-version'
+
+allprojects {
+    group 'edu.cmu.cs.dvids.scraper'
+    version gitVersion()
+
+    repositories {
+        maven {
+            jcenter()
+            mavenCentral()
+            url "http://palantir.bintray.com/releases"
+        }
+    }
+
+    apply plugin: 'java'
+    apply plugin: 'org.inferred.processors'  // installs the "processor" configuration needed for baseline-error-prone
+
+    sourceCompatibility = '11'
+    targetCompatibility = '11'
+
+    test {
+        useJUnitPlatform()
+    }
+
+    tasks.withType(JavaCompile).configureEach {
+        options.errorprone.errorproneArgs += [
+                '-Xep:PreferSafeLoggableExceptions:OFF',
+                '-Xep:PreferSafeLoggingPreconditions:OFF',
+                '-Xep:Slf4jLogsafeArgs:OFF'
+        ]
+
+        options.compilerArgs += [
+                '-Werror',
+                '-Xlint:deprecation',
+                '-Xlint:unchecked',
+        ]
+    }
+}

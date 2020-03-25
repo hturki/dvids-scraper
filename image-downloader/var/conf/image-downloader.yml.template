@@ -1,0 +1,6 @@
+api-key: <your_key_here>
+input-file: /home/ubuntu/dvids-metadata/dvids-metadata.csv.0
+output-dir: /data2/dvids-images
+server:
+  applicationConnectors: []
+  adminConnectors: []

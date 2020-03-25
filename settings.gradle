@@ -1,0 +1,4 @@
+rootProject.name = 'dvids-scraper'
+
+include 'image-downloader'
+include 'metadata-scraper'

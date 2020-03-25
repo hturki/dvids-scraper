@@ -1,0 +1,9 @@
+com.squareup.okhttp3:okhttp=4.4.1
+com.twelvemonkeys.imageio:imageio-jpeg=3.5
+io.dropwizard:*=2.0.2
+one.util:streamex=0.7.2
+org.apache.commons:commons-csv=1.8
+org.immutables:value = 2.8.3
+
+# Test deps
+org.mockito:* = 3.3.1
